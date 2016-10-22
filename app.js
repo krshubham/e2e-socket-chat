@@ -19,7 +19,7 @@ app.get('/',function(req,res){
         title: 'Welcome'
     });
 });
-console.log(module);
-console.log(exports);
+
+
 console.log('server listening at port 3000');
 app.listen(3000);

@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
 var mustacheExpress = require('mustache-express');
+var io = require('socket.io');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -18,6 +19,7 @@ app.get('/',function(req,res){
         title: 'Welcome'
     });
 });
-
+console.log(module);
+console.log(exports);
 console.log('server listening at port 3000');
 app.listen(3000);

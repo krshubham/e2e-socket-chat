@@ -2,7 +2,7 @@
 
 body{
     background-color: #000;
-    color: #69f0ae;
+    color: #0F0;
     font-family: 'Lato', sans-serif;
 }
 input[type=text]{
@@ -15,20 +15,20 @@ input[type=text]:hover{
 }
 
 input[type=text]:focus{
-    border-bottom-color: #69f0ae !important;
+    border-bottom-color: #0F0 !important;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #69f0ae;
+  color: #0F0;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: #69f0ae;
+  color: #0F0;
 }
 :-ms-input-placeholder { /* IE 10+ */
-  color: #69f0ae;
+  color: #0F0;
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: #69f0ae;
+  color: #0F0;
 }
 
 .chat-p{
@@ -36,4 +36,9 @@ input[type=text]:focus{
     margin-right: 1em;
     font-size: 1.2em;
     padding-top: 10px;
+}
+
+#prompt{
+    font-size: 1.5em;
+    color: #0F0;
 }

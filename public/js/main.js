@@ -5,13 +5,18 @@ function chat(e) {
 
 
 var socket = io("http://localhost:3000");
+var title = document.getElementsByTagName('title')[0];
+
 
 socket.on("disconnect", function () {
-    alert('disconnected');
+    //alert('disconnected');
+    setTitle('disconnected | Chat');    
+    
 });
 
 socket.on("connect", function () {
-    alert('Hello');
+    //alert('Hello');
+    setTitle('connected | Chat');    
 });
 
 socket.on("message", function (message) {
@@ -53,4 +58,8 @@ function chat(e){
 }
 function typing(){
     socket.emit('typing');
+}
+
+function setTitle(text){
+    title.innerHTML = text;
 }

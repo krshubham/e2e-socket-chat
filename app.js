@@ -24,7 +24,8 @@ io.on('connection', function (socket) {
             time: time,
             content: content
         };
-        socket.emit('message',reply);
+        socket.emit('message',reply);        
+        socket.broadcast.emit('message',reply);
     });
     socket.on('typing',function(){
         socket.emit('typemsg');

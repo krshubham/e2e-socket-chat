@@ -1,0 +1,29 @@
+{
+  "name": "e2e-socket-chat",
+  "version": "1.0.0",
+  "description": "An end to end encrypted chat service that is anonymous and secure and based on websockets",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krshubham/e2e-socket-chat.git"
+  },
+  "keywords": [
+    "krshubham",
+    "Anonymous chat",
+    "E2E websocket chat"
+  ],
+  "author": "krshubham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krshubham/e2e-socket-chat/issues"
+  },
+  "homepage": "https://github.com/krshubham/e2e-socket-chat#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "socket.io": "^1.5.0"
+  }
+}

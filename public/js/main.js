@@ -6,31 +6,51 @@ function chat(e) {
 
 var socket = io("http://localhost:3000");
 
-socket.on("disconnect", function() {
-	setTitle("Disconnected");
+socket.on("disconnect", function () {
+    alert('disconnected');
 });
 
-socket.on("connect", function() {
-	alert('Hello');
+socket.on("connect", function () {
+    alert('Hello');
 });
 
-socket.on("message", function(message) {
-	printMessage(message);
+socket.on("message", function (message) {
+    printMessage(message);
 });
 
-document.forms[0].onsubmit = function () {
-    var input = document.getElementById("message");
-    printMessage(input.value);
-    socket.emit("chat", input.value);
-    input.value = '';
-};
-
-function setTitle(title) {
-    document.querySelector("h1").innerHTML = title;
+socket.on("typemsg",function(data){
+    printType(data);
+})
+function printMessage(message) {
+   var html = ' <div class="message">'+
+        '<div class="card-panel black">'+
+            '<div class="chip">'+
+                message.time+
+            '</div>'+
+            '<p class="chat-p">'+message.content+'</p>'+
+       '</div>'+
+    '</div>';
+    document.querySelector("div.messages").innerHTML += html;
 }
 
-function printMessage(message) {
-    var p = document.createElement("p");
-    p.innerText = message;
-    document.querySelector("div.messages").appendChild(p);
+function printType(data){
+    document.getElementById("type").style.display = 'block';
+}
+setInterval(function(){
+    document.getElementById('type').style.display = 'none';
+},5000);
+function chat(e){
+    e.preventDefault();
+    var message = null || document.getElementById('chatmsg').value;
+    console.log(message);
+    if(message){
+        socket.emit('chat',message);
+    }
+    else{
+        alert('Fill something in');
+    }
+    return false;
+}
+function typing(){
+    socket.emit('typing');
 }

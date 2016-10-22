@@ -4,7 +4,7 @@ function chat(e) {
 }
 
 
-var socket = io("http://localhost:3000");
+var socket = io("http://52.66.166.65:3000");
 var title = document.getElementsByTagName('title')[0];
 
 

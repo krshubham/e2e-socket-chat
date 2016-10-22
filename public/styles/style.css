@@ -1,6 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 body{
     background-color: #000;
+    color: #69f0ae;
+    font-family: 'Lato', sans-serif;
 }
-#welcome{
-    color: #fff;
+input[type=text]{
+    border-bottom: none;
+    font-size: 2em;
+}
+
+input[type=text]:hover{
+    border-bottom-color: #fff !important;
+}
+
+input[type=text]:focus{
+    border-bottom-color: #69f0ae !important;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #69f0ae;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #69f0ae;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #69f0ae;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #69f0ae;
+}
+
+.chat-p{
+    display: inline;
+    margin-right: 1em;
+    font-size: 1.2em;
+    padding-top: 10px;
 }

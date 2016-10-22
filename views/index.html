@@ -10,12 +10,40 @@
 <body>
 	<div class="container">
 		<div class="card-panel black" align="center">
-			<h1 id="welcome">Welcome to e2eChat</h1>
+			<h1 id="welcome">E2E chat</h1>
+		</div>
+		<div class="row">
+			<form onsubmit="chat(event)">
+				<input type="text" class="chat-input" placeholder="Anything?...">
+			</form>
 		</div>
 	</div>
-    <div class="row">
-        
-    </div>
+	<div class="container">
+		<div class="messages">
+			<div class="message">
+				<div class="card-panel black">
+					<div class="chip">
+						07:00 PM
+					</div>
+					<p class="chat-p">Hello</p>
+				</div>
+			</div>
+            <div class="message">
+				<div class="card-panel black">
+					<div class="chip">
+						07:00 PM
+					</div>
+					<p class="chat-p">Hello</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+<script>
+    function chat(e){
+        e.preventDefault();
+        return false;
+    }
+</script>
 
 </html>

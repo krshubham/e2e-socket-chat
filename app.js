@@ -21,7 +21,7 @@ io.on('connection', function (socket) {
         var time = new Date().getTime();
         var content = data;
         var reply = {
-            time: moment.from(time),
+            time: moment().from(time),
             content: content
         };
         socket.emit('message',reply);        

@@ -42,7 +42,7 @@ function login(req, res) {
                         },secret,{
                             expiresIn: 60*60
                         });
-                        return res.redirect('/chat/?token='+token);
+                        return res.redirect('/chat/'+token);
                     }
                 }
                 else{
@@ -58,7 +58,7 @@ function login(req, res) {
                         },secret,{
                             expiresIn: 60 * 60
                         });
-                        res.redirect('/chat/?token='+token);
+                        res.redirect('/chat/'+token);
                     });
                 }
             });

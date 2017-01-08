@@ -9,7 +9,7 @@ var moment = require('moment');
 var auth = require('./routes/auth');
 var morgan = require('morgan');
 var db = require('./db');
-
+var chat = require('./routes/chat');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -54,6 +54,6 @@ app.get('/', function (req, res) {
 });
 
 app.post('/auth/login',auth.login);
-
+app.get('/chat/:token', chat.init);
 console.log('server listening at port 3000');
 server.listen(80);

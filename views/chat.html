@@ -8,17 +8,16 @@
 <div class="container">
     <div class="card-panel black" align="center">
         <h1 id="welcome">E2E chat</h1>
-        <span id="type" style="display: none;" onkeydown="typing()">Someone is typing ...</span>
-    </div>
-    <div class="row">
-        <form onsubmit="chat(event)">
-            <input type="text" class="chat-input" placeholder="Type Here..." id="chatmsg">
-        </form>
     </div>
 </div>
 <div class="container">
     <div class="messages">
     </div>
+</div>
+<div id="input-box">
+    <form onsubmit="chat(event)">
+        <input type="text" class="chat-input" placeholder="Type Here..." id="chatmsg">
+    </form>
 </div>
 </body>
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>

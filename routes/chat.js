@@ -4,6 +4,14 @@
 var jwt = require('jsonwebtoken');
 const secret = 'R3Dcherrylovesg@@k';
 const assert = require('assert');
+var app = require('../app');
+var server = app.server;
+var io = require('socket.io')(server);
+
+io.on('connection', function (socket) {
+    console.log('socket');
+});
+
 
 function init(req,res) {
     var token = req.params.token;
@@ -11,6 +19,10 @@ function init(req,res) {
         assert.notEqual(token, undefined);
         var decoded = jwt.verify(token, secret);
         //TODO: the chat connection using sockets
+        res.render('chat',{
+            token: token
+        });
+
     }
     catch(err){
         console.log(err);

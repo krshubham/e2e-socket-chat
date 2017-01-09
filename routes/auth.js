@@ -5,7 +5,7 @@ var xss = require('xss');
 var db = require('../db');
 var jwt = require('jsonwebtoken');
 const secret = 'R3Dcherrylovesg@@k';
-
+var app
 function login(req, res) {
     if (req && req.body) {
         var u = req.body.username;

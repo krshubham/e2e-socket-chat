@@ -28,23 +28,9 @@ db.connect(url, function (err) {
     console.log('db conn active');
 });
 
-// io.on('connection', function (socket) {
-//     console.log(socket.handshake);
-
-//     socket.on('chat', function (data) {
-//         var time = new Date().getTime();
-//         var content = data;
-//         var reply = {
-//             time: moment().from(time),
-//             content: content
-//         };
-//         socket.emit('message',reply);        
-//         socket.broadcast.emit('message',reply);
-//     });
-//     socket.on('typing',function(){
-//         socket.emit('typemsg');
-//     });
-// });
+io.on('connection', function (socket) {
+    console.log('done');
+});
 
 
 app.get('/', function (req, res) {
@@ -57,3 +43,8 @@ app.post('/auth/login',auth.login);
 app.get('/chat/:token', chat.init);
 console.log('server listening at port 3000');
 server.listen(80);
+
+module.exports = {
+    server: server,
+    io: io
+};

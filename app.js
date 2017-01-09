@@ -10,6 +10,7 @@ var auth = require('./routes/auth');
 var morgan = require('morgan');
 var db = require('./db');
 var chat = require('./routes/chat');
+var mainApp = require('./routes/main-app');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -19,6 +20,7 @@ app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'views'));
 
+mainApp(io);
 //db connection
 const url = 'mongodb://localhost:27017/fun';
 db.connect(url, function (err) {
@@ -27,11 +29,6 @@ db.connect(url, function (err) {
     }
     console.log('db conn active');
 });
-
-io.on('connection', function (socket) {
-    console.log('done');
-});
-
 
 app.get('/', function (req, res) {
     res.render('index', {
@@ -43,8 +40,3 @@ app.post('/auth/login',auth.login);
 app.get('/chat/:token', chat.init);
 console.log('server listening at port 3000');
 server.listen(80);
-
-module.exports = {
-    server: server,
-    io: io
-};

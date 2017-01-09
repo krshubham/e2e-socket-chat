@@ -8,11 +8,6 @@ var app = require('../app');
 var server = app.server;
 var io = require('socket.io')(server);
 
-io.on('connection', function (socket) {
-    console.log('socket');
-});
-
-
 function init(req,res) {
     var token = req.params.token;
     try{

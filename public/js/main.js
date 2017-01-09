@@ -4,7 +4,7 @@ function chat(e) {
 }
 
 
-var socket = io("http://52.66.166.65:3000");
+var socket = io();
 var title = document.getElementsByTagName('title')[0];
 
 
@@ -63,3 +63,4 @@ function typing(){
 function setTitle(text){
     title.innerHTML = text;
 }
+

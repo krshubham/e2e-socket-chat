@@ -39,4 +39,4 @@ app.get('/', function (req, res) {
 app.post('/auth/login',auth.login);
 app.get('/chat/:token', chat.init);
 console.log('server listening at port 3000');
-server.listen(80);
+server.listen(9876);

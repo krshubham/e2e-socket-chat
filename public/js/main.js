@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost/app');
+var socket = io.connect('http://35.154.38.81:9876/app');
 
 function setTitle(text){
     var title = document.getElementsByTagName('title')[0];

@@ -14,6 +14,7 @@ function getMessage(e) {
         data: $('#chatmsg').val(),
         token: location.pathname.split('/')[2]
     });
+    $('#chatmsg').val('');
 }
 
 socket.on('pubmsg', function (data) {
@@ -22,6 +23,8 @@ socket.on('pubmsg', function (data) {
             <strong>By: ${data.username}</strong>            
     </div>`;
     $('div.messages').append(html);
+    var messages = document.getElementsByClassName('messages')[0];
+    messages.scrollTop = messages.scrollHeight;
 
 });
 

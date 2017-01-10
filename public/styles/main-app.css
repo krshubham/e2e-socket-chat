@@ -53,4 +53,5 @@ input[type=text]:focus{
 
 div.messages{
     height: 400px;
+    position: fixed;
 }

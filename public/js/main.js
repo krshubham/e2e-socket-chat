@@ -8,9 +8,6 @@ function setTitle(text){
 
 function getMessage(e) {
     e.preventDefault();
-    console.log({data: $('#chatmsg').val(),
-        token: location.pathname.split('/')[2]
-    });
     socket.emit('publicmsg', {
         data: $('#chatmsg').val(),
         token: location.pathname.split('/')[2]

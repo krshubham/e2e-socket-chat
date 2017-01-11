@@ -29,7 +29,6 @@ exports = module.exports = function(io){
                         */
                         var messages = maindb.get().collection('messages');
                         messages.insertOne({data: data.data,username: decoded.data.username}).then(function(data){
-                            console.log(data);
                             assert.notEqual(data, null);
                         })
                         .catch(function(err){

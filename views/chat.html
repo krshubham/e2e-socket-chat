@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{{> includes/head-chat}}
-<title>Chat</title>
+    {{> includes/head-chat}}
+    <title>Chat</title>
 </head>
 <body>
 <div class="container">
@@ -11,7 +11,12 @@
     </div>
 </div>
 <div class="container">
-    <div class="messages" id="messages">
+    <div class="row">
+        <div class="col m3 s12">
+            <h3>Online Users</h3>
+        </div>
+        <div class="messages col m9 s12" id="messages">
+        </div>
     </div>
 </div>
 <div id="input-box">
@@ -22,4 +27,5 @@
 </body>
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script src="/js/main.js"></script>
+<script src="/js/xss.min.js"></script>
 </html>

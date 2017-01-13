@@ -7,6 +7,7 @@ var maindb = require('../db');
 var jwt = require('jsonwebtoken');
 const secret = 'R3Dcherrylovesg@@k';
 const assert = require('assert');
+var xss = require('xss');
 
 exports = module.exports = function(io){
     var app = io.of('/app');
@@ -28,7 +29,7 @@ exports = module.exports = function(io){
                         * }
                         */
                         var messages = maindb.get().collection('messages');
-                        messages.insertOne({data: data.data,username: decoded.data.username}).then(function(data){
+                        messages.insertOne({data: xss(data.data),username: xss(decoded.data.username)}).then(function(data){
                             assert.notEqual(data, null);
                         })
                         .catch(function(err){
@@ -45,7 +46,9 @@ exports = module.exports = function(io){
                    }
                 }
                 catch(err){
-                    console.log(err);
+                    socket.emit('jwterror', {
+                        message: `Please Login again!`
+                    });
                 }
             }
         });

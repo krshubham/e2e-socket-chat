@@ -1,5 +1,5 @@
-var socket = io.connect('http://35.154.38.81:9876/app'); 
-// var socket = io.connect('http://localhost:9876/app');
+// var socket = io.connect('http://35.154.38.81:9876/app');
+var socket = io.connect('http://localhost:9876/app');
 
 function setTitle(text){
     var title = document.getElementsByTagName('title')[0];
@@ -8,9 +8,16 @@ function setTitle(text){
 
 function getMessage(e) {
     e.preventDefault();
+    var message = e.target.getElementsByTagName('input')[0].value;
+    message.trim();
+    if(message.match(/^\s*$/gi)){
+        Materialize.toast('Blank message not allowed',2000);
+        $('#chatmsg').val('');
+        return false;
+    }
     socket.emit('publicmsg', {
-        data: $('#chatmsg').val(),
-        token: location.pathname.split('/')[2]
+        data: filterXSS(message),
+        token: filterXSS(location.pathname.split('/')[2])
     });
     $('#chatmsg').val('');
 }
@@ -48,5 +55,7 @@ socket.on('printLastSession', function(result){
     }
 });
 
-
+socket.on('jwterror', function (data) {
+    Materialize.toast(data.message,3000);
+});
 

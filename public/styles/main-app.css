@@ -4,6 +4,7 @@ body{
     background-color: #000;
     color: #0F0;
     font-family: 'Lato', sans-serif;
+    overflow: auto;
 }
 input[type=text]{
     border-bottom: none;
@@ -57,5 +58,5 @@ div.messages{
 }
 div.online{
     overflow-y: auto;
-    height: auto;
+    height: 200px;
 }

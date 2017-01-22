@@ -12,6 +12,7 @@
 ### Setup:
 + `npm install`
 + `npm install nodemon -g`
++ `bower install bootstrap materialize`
 + `sudo service mongod start`
 +  `nodemon app.js`
 

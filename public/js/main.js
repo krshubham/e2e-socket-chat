@@ -8,7 +8,7 @@
  * This one keeps changing if you change your network or reconnect some other time   *
  **************************************************************************************/
 
-var socket = io.connect('http://35.154.38.81:9876/app');
+var socket = io.connect('/app');
 
 function setTitle(text){
     var title = document.getElementsByTagName('title')[0];
@@ -18,17 +18,28 @@ function setTitle(text){
 function getMessage(e) {
     e.preventDefault();
     var message = e.target.getElementsByTagName('input')[0].value;
+    var username = e.target.getElementsByTagName('input')[1].value;
+    console.log(message,username);
     message.trim();
     if(message.match(/^\s*$/gi)){
         Materialize.toast('Blank message not allowed',2000);
         $('#chatmsg').val('');
         return false;
     }
-    socket.emit('publicmsg', {
+    if(username.length && !username.match(/^\s*$/gi)){
+        socket.emit('privatemsg',{
+            data: filterXSS(message),
+            token: filterXSS(location.pathname.split('/')[2])
+        });
+    }
+    else{
+        socket.emit('publicmsg', {
         data: filterXSS(message),
         token: filterXSS(location.pathname.split('/')[2])
     });
+    }
     $('#chatmsg').val('');
+    $('#privmsg').val('');
 }
 
 function printMessage(data){
@@ -56,8 +67,8 @@ socket.on('pubmsg', function (data) {
     printMessage(data);
 });
 
-socket.on("disconnect", function () {
-    remove
+socket.on("disconnect", function (data) {
+
 });
 
 socket.on("connect", function () {
@@ -95,4 +106,6 @@ socket.on('fatalerr', function (data) {
 socket.on('user connected', function (data) {
     insertOnlineUser(data.user);
 });
+
+
 

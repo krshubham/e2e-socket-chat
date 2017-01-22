@@ -123,7 +123,10 @@ exports = module.exports = function (io) {
                 return;
             }
         });
-
+        socket.on('privatemsg',function(data){
+            console.log(data);
+        });
+//TODO: write the logic for removing a user frmo online list while disconnecting
         socket.on('disconnect', function () {
             var address = socket.handshake.address;
             var onlineUsers = maindb.get().collection('online');
